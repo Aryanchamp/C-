@@ -1,0 +1,91 @@
+Problem Statement
+
+Rishi, a software developer, is tasked with creating a versatile utility that can either sum a series of integers or concatenate a series of strings based on the type of input provided. He plans to achieve this using the concept of function overloading.
+
+Your task is to help Rishi by writing a program that will take an input type and three subsequent inputs, and then perform the appropriate operation (summation or concatenation) based on the specified input type. You need to implement two overloaded add functions: one for integers and one for strings.
+
+Note: Use the same naming convention as mentioned above.
+
+Input format :
+The first line consists of a string inp_type, representing the input type. It can either be "int" for integers or "str" for strings.
+
+Three subsequent inputs:
+
+If inp_type is "int", the inputs are three strings representing integer values.
+If inp_type is "str", the inputs are three strings representing text.
+Output format :
+If inp_type is "int", the program should:
+
+The first line prints the sum of the first integer.
+The second line prints the sum of the first and second integers.
+The third line prints the sum of the first, second, and third integers.
+
+
+If inp_type is "str", the program should:
+
+The first line prints the first string.
+The second line prints the concatenation of the first and second strings.
+The third line prints the concatenation of the first, second, and third strings.
+
+
+Refer to the sample output for the formatting specifications.﻿
+
+Code constraints :
+The input type (inp_type) is either "int" or "str".
+
+If the input type is "int", the subsequent inputs are valid integer strings.
+
+If the input type is "str", the subsequent inputs are valid strings.
+
+Sample test cases :
+Input 1 :
+int
+4
+5
+6
+Output 1 :
+4
+9
+15
+Input 2 :
+str
+Hello
+Good
+Morning
+Output 2 :
+Hello
+HelloGood
+HelloGoodMorning
+
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void add(int n){
+    return ;
+
+};
+
+int main (){
+    string inp_type;
+    cin >> inp_type;
+    
+    
+    if (inp_type == "int"){
+        int a,b,c;
+        cin >> a >> b >> c;
+        cout << a << endl << a+b << endl << a+b+c;
+    } else if (inp_type == "str"){
+        string a,b,c;
+        cin  >> a >> b >> c;
+        cout << a << endl << a+b << endl << a+b+c;
+    } else {
+        cout << "Invalid";
+    }
+}
