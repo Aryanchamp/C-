@@ -1,0 +1,99 @@
+You are developing a sports analytics system for a basketball team. As part of the system, you need to implement a feature that finds the second largest player's height from a given array of player heights.
+
+
+
+Write a program that takes user input for the number of players and their respective heights. The program should use the selection sort algorithm to sort the player heights in non-increasing order. After sorting, it should display the sorted array of player heights and display the second largest player's height from the sorted list.
+
+Input format :
+The first line of input consists of an integer n, representing the number of players.
+
+The second line of input consists of n space-separated integers, representing the heights of the players.
+
+Output format :
+The first line of output displays "Sorted array:" followed by n space-separated integers, representing the sorted array of player heights.
+
+The second line of output displays "The second largest element is " followed by an integer, representing the second largest player's height.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+In this scenario, the test cases fall under the following constraints:
+
+1 ≤ n ≤ 15
+
+1 ≤ height ≤ 250
+
+Sample test cases :
+Input 1 :
+5
+135 169 185 174 212
+Output 1 :
+Sorted array: 212 185 174 169 135 
+The second largest element is 185
+Input 2 :
+6
+174 125 136 195 150 138
+Output 2 :
+Sorted array: 195 174 150 138 136 125 
+The second largest element is 174
+
+
+-----------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void selectionSort(vector<int>& arr) {
+    int n = arr.size();
+    
+    for (int i = 0; i < n - 1; ++i) {
+        int max_idx = i;
+        
+        for (int j = i + 1; j < n; ++j) {
+            if (arr[j] > arr[max_idx]) {
+                max_idx = j;
+            }
+        }
+        
+        if (max_idx != i) {
+            swap(arr[i], arr[max_idx]);
+        }
+    }
+}
+
+int main() {
+    int n;
+    cin >> n;
+    
+    vector<int> heights(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> heights[i];
+    }
+    
+    // Sorting heights in non-increasing order using selection sort
+    selectionSort(heights);
+    
+    // Output sorted array
+    cout << "Sorted array:";
+    for (int i = 0; i < n; ++i) {
+        cout << " " << heights[i];
+    }
+    cout << endl;
+    
+    // Finding the second largest element
+    int secondLargest;
+    if (n >= 2) {
+        secondLargest = heights[1]; // Second element in sorted array
+    } else {
+        secondLargest = heights[0]; // Only one element, it's the largest
+    }
+    
+    // Output the second largest element
+    cout << "The second largest element is " << secondLargest << endl;
+    
+    return 0;
+}
