@@ -1,0 +1,103 @@
+You are working as a software developer for an online retail company. The company has tasked you with creating a program to merge two arrays that contain product IDs. 
+
+
+
+The first array represents the product IDs of items currently in stock. The second array represents the product IDs of items in a customer's shopping cart. Your goal is to merge these two arrays into a single, sorted list of unique product IDs without any duplicates.
+
+Input format :
+The first line of input consists of an integer N, representing the number of products in the stock array.
+
+The second line consists of N space-separated sorted integers representing the product IDs of the stock array.
+
+The third line of input consists of an integer M, representing the number of products in the cart array.
+
+The fourth line consists of M space-separated sorted integers representing the product IDs of the cart array.
+
+Output format :
+The output displays the merged array, which is the merged product IDs in sorted order without any duplicates.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+In this scenario, the test cases fall under the following constraints:
+
+1 ≤ N, M ≤ 20
+
+0 ≤ product IDs of the stock and cart array ≤ 100
+
+Sample test cases :
+Input 1 :
+5
+1 2 3 4 5
+4
+6 7 8 9
+Output 1 :
+1 2 3 4 5 6 7 8 9 
+Input 2 :
+6
+2 3 5 7 8 9 
+3
+1 3 5
+Output 2 :
+1 2 3 5 7 8 9 
+
+
+-----------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+using namespace std;
+
+vector<int> merge_and_sort(const vector<int>& stock_ids, const vector<int>& cart_ids) {
+    // Using set to automatically handle uniqueness
+    set<int> merged_set;
+    
+    // Insert elements from stock_ids
+    for (int id : stock_ids) {
+        merged_set.insert(id);
+    }
+    
+    // Insert elements from cart_ids
+    for (int id : cart_ids) {
+        merged_set.insert(id);
+    }
+    
+    // Convert set to sorted vector
+    vector<int> merged_ids(merged_set.begin(), merged_set.end());
+    
+    return merged_ids;
+}
+
+int main() {
+    int N, M;
+    cin >> N;
+    vector<int> stock_ids(N);
+    for (int i = 0; i < N; ++i) {
+        cin >> stock_ids[i];
+    }
+    
+    cin >> M;
+    vector<int> cart_ids(M);
+    for (int i = 0; i < M; ++i) {
+        cin >> cart_ids[i];
+    }
+    
+    // Merge and sort the arrays
+    vector<int> merged_ids = merge_and_sort(stock_ids, cart_ids);
+    
+    // Output the merged array
+    for (int i = 0; i < merged_ids.size(); ++i) {
+        cout << merged_ids[i];
+        if (i < merged_ids.size() - 1) {
+            cout << " ";
+        }
+    }
+    cout << endl;
+    
+    return 0;
+}
