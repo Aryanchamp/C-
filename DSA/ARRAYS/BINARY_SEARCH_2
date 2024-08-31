@@ -1,0 +1,84 @@
+Emma has a collection of unique plant species in her garden. She wants to check if a particular plant is already in her collection. 
+
+
+
+Help Emma by writing a program using a linear search algorithm that determines if the plant species is in her collection.
+
+Input format :
+The first line of input consists of an integer n, representing the number of plant species.
+
+The second line consists of n space-separated integers, representing the plant species IDs in Emma's collection.
+
+The third line consists of an integer representing the target plant species ID.
+
+Output format :
+The output prints whether the target plant species ID is present in the collection or not.
+
+
+
+Refer to the sample output for the exact format.
+
+Code constraints :
+1 ≤ n ≤ 25
+
+1 ≤ species ID, target ≤ 100
+
+Sample test cases :
+Input 1 :
+5
+6 8 7 4 2
+2
+Output 1 :
+Plant species 2 is present in the collection
+Input 2 :
+5
+6 8 7 4 2
+1
+Output 2 :
+Plant species 1 is not present in the collection
+
+
+
+
+-----------------------------------------------------------------------------------
+
+
+#include <iostream>
+using namespace std;
+
+// Function to perform linear search to find if target is in the collection
+bool isPlantSpeciesPresent(int species[], int n, int target) {
+    for (int i = 0; i < n; ++i) {
+        if (species[i] == target) {
+            return true;
+        }
+    }
+    return false;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    
+    // Read the plant species IDs into an array
+    int species[n];
+    for (int i = 0; i < n; ++i) {
+        cin >> species[i];
+    }
+    
+    // Read the target plant species ID
+    int target;
+    cin >> target;
+    
+    // Perform linear search to check if target is in the collection
+    bool found = isPlantSpeciesPresent(species, n, target);
+    
+    // Output the result based on whether the target was found
+    if (found) {
+        cout << "Plant species " << target << " is present in the collection" << endl;
+    } else {
+        cout << "Plant species " << target << " is not present in the collection" << endl;
+    }
+    
+    return 0;
+}// You are using GCC
