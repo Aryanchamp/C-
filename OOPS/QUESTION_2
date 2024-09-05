@@ -1,0 +1,53 @@
+Emily is a mathematics enthusiast who loves exploring the world of numbers. Recently, she decided to create a program to calculate the factorial of a given number. She implemented a function called factorial() that takes an integer as an argument and uses the concept of call by value to calculate the factorial.
+
+
+
+Whenever Emily calls the factorial function with a specific number, it performs the necessary calculations to find the factorial of that number.
+
+
+
+Emily's program allows users to easily find the factorial of any number by simply providing the number as an argument to the factorial function. This way, they can quickly obtain the result without needing to implement complex factorial calculations themselves.
+
+
+
+Note: This is a sample question asked in a TCS interview.
+
+Input format :
+The input consists of the number N whose factorial has to be calculated.
+
+Output format :
+The output prints the factorial of the given number
+
+Code constraints :
+1 ≤ N ≤ 10
+
+Sample test cases :
+Input 1 :
+7
+Output 1 :
+5040
+
+----------------------------------------------------------------------------------------------------
+
+
+#include <iostream>
+using namespace std;
+
+// Function to calculate the factorial of a number
+int factorial(int n) {
+    int result = 1;
+    for (int i = 1; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int N;
+    cin >> N;  // Read the input number
+    
+    int fact = factorial(N);  // Compute the factorial
+    cout << fact << endl;  // Output the result
+    
+    return 0;
+}// You are using GCC
