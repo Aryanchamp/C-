@@ -1,0 +1,107 @@
+In a manufacturing plant, Kishore is building a system to track the dimensions of three key components, labeled x, y, and z. The system needs to:
+
+		i) Rotate the dimensions as follows:
+
+x becomes y
+y becomes z
+z becomes the original x
+		ii) Identify the smallest dimension after the rotation.
+
+
+
+Write a program that reads three integer values (for x, y, and z), performs the rotation, and then finds and displays the smallest dimension among the three.
+
+
+
+Function Specifications:
+
+void rotate(int& a, int& b, int& c)
+
+int& getSmallest(int& a, int& b, int& c)
+
+
+
+Note: This is a sample question asked in TCS recruitment.
+
+Input format :
+The input consists of the three integers x, y, and z, representing the initial dimension of the first, second, and third components separated by spaces.
+
+Output format :
+The output displays the following format:
+
+The values of x, y, and z before rotation in the format: "Before Rotation: x: <x> y: <y> z: <z>".
+
+The values of x, y, and z after rotation in the format: "After Rotation: x: <new x> y: <new y> z: <new z>".
+
+The smallest value among x, y, and z after rotation in the format: "The smallest value among x, y, z: <smallest>".
+
+
+
+Refer to the sample output for the formatting specifications.
+
+Code constraints :
+-100 ≤ x, y, and z ≤ 100
+
+Sample test cases :
+Input 1 :
+1 2 3
+Output 1 :
+Before Rotation: x: 1 y: 2 z: 3
+After Rotation: x: 2 y: 3 z: 1
+The smallest value among x, y, z: 1
+Input 2 :
+5 3 7
+Output 2 :
+Before Rotation: x: 5 y: 3 z: 7
+After Rotation: x: 3 y: 7 z: 5
+The smallest value among x, y, z: 3
+Input 3 :
+-4 -1 -9
+Output 3 :
+Before Rotation: x: -4 y: -1 z: -9
+After Rotation: x: -1 y: -9 z: -4
+
+
+
+---------------------------------------------------------------------------------
+
+
+#include <iostream>
+#include <algorithm> // For std::min function
+
+using namespace std;
+
+// Function to rotate the dimensions
+void rotate(int& a, int& b, int& c) {
+    int temp = a;  // Store the original value of a
+    a = b;         // x becomes y
+    b = c;         // y becomes z
+    c = temp;      // z becomes the original x
+}
+
+// Function to get the smallest of the three dimensions
+int getSmallest(int& a, int& b, int& c) {
+    return min(a, min(b, c));
+}
+
+int main() {
+    int x, y, z;
+    cin >> x >> y >> z;  // Read the input values
+
+    // Output before rotation
+    cout << "Before Rotation: x: " << x << " y: " << y << " z: " << z << endl;
+    
+    // Perform the rotation
+    rotate(x, y, z);
+    
+    // Output after rotation
+    cout << "After Rotation: x: " << x << " y: " << y << " z: " << z << endl;
+    
+    // Get and output the smallest value
+    int smallest = getSmallest(x, y, z);
+    cout << "The smallest value among x, y, z: " << smallest << endl;
+
+    return 0;
+}// You are using GCC
+
+The smallest value among x, y, z: -9
