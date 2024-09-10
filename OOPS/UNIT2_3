@@ -1,0 +1,56 @@
+Preethi is developing an input processing module for a chatbot. Implement a program that reads user input and counts the number of words to analyze the user's query. Utilize the pointer-to-pointer concept to process the input and count the words.
+
+Input format :
+The input consists of a list of words/sentences as string.
+
+Output format :
+The output prints the count of the words that are present in the given sentence/sentences.
+
+
+
+﻿Refer to the sample output for formatting specifications.
+
+Code constraints :
+In this scenario, the test cases fall under the following constraints:
+
+1 ≤ Total number of characters in the sentence(s) ≤ 1000
+
+Sample test cases :
+Input 1 :
+Hi, how are you? Hope this code helps you to learn. Happy Learning!! - 01245
+Output 1 :
+15
+Input 2 :
+hello world
+Output 2 :
+2
+
+--------------------------------------------------------
+
+// You are using GCC
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main(){
+    
+    string a; 
+    getline(cin, a);
+    
+    int count = 0; 
+    bool inword = false;
+    
+    for (int i = 0; i < a.length(); i++){
+        if (a[i] != ' '){
+            if(!inword){
+                count++;
+                inword = true;
+            }
+        } else {
+            inword = false;
+        }
+    } 
+cout << count;
+    
+}
