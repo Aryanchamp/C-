@@ -1,0 +1,113 @@
+Alice is preparing for a coding competition and wants to practice her skills with linked lists. She decides to write a program that allows her to create a linked list by inserting elements at the front. 
+
+
+
+Help Alice with her task.
+
+
+
+Company tags: HCL
+
+Input format :
+The first line of input consists of an integer n, representing the number of elements to be inserted.
+
+The second line of input consists of n space-separated integers, representing the elements to be inserted in the linked list.
+
+The third line of input consists of an integer m, representing the value to be inserted at the front of the linked list.
+
+Output format :
+The first line of output displays "Created Linked list: " followed by the elements of the linked list.
+
+The second line of output displays "Final List: " followed by the elements of the linked list after inserting the new element at the front.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+In this scenario, the test cases fall under the following constraints:
+
+1 ≤ n ≤ 10
+
+1 ≤ elements, m ≤ 100
+
+Sample test cases :
+Input 1 :
+5
+6 5 4 3 2
+1
+Output 1 :
+Created Linked list: 2 3 4 5 6 
+Final List: 1 2 3 4 5 6 
+Input 2 :
+4
+-10 20 -30 40
+5
+Output 2 :
+Created Linked list: 40 -30 20 -10 
+Final List: 5 40 -30 20 -10 
+
+
+------------------------------------------------------------------
+
+
+#include <iostream>
+using namespace std;
+
+// Define a node structure
+class node
+{
+    public:
+    int data;
+    node* next;
+    
+    node(int data)
+    {
+        this -> data = data;
+        this -> next = NULL;
+    }
+    
+};
+
+void insert(node* &head, int data)
+{
+    node* temp = new node(data);
+    temp -> next = head;
+    head = temp;
+}
+
+void print(node* &head)
+{
+    node* temp = head;
+    while(temp!=NULL)
+    {
+        cout << temp->data << " ";
+        temp = temp -> next;
+    }
+    cout << endl;
+}
+
+
+int main()
+{
+    node* head = NULL;
+    
+    int n,m;
+    cin >> n;
+    
+    for(int i = 0; i < n; i++)
+    {
+        int digit;
+        cin >> digit;
+        insert(head, digit);
+    }
+    
+    cout << "Created Linked list: ";
+    print(head);
+    
+    cin >> m;
+    insert(head, m);
+    cout << "Final List: ";
+    print(head);
+    
+}
