@@ -1,0 +1,150 @@
+Imagine you are developing a contact management application where users can maintain a singly linked list of names. 
+
+
+
+Initially, users can enter a sequence of names to form a list of contacts. Later, they can insert a new name at a specific position within the list to rearrange their contacts, ensuring the list is updated and displayed correctly.
+
+Input format :
+The first line of input consists of an integer n, representing the number of initial names.
+
+The next n lines each contain a single name, representing the initial list of contacts.
+
+The last line consists of a name and an integer pos, representing the new contact to be added and its position in the list.
+
+Output format :
+The output prints the updated list of contacts after inserting the new contact at the specified position.
+
+
+
+Refer to the sample output for formatting specifications.
+
+Code constraints :
+The given test cases fall under the following constraints:
+
+1 ≤ n ≤ 10
+
+1 ≤ length of each name ≤ 100
+
+Sample test cases :
+Input 1 :
+4
+John
+Alice
+Bob
+Emma
+Michael 3
+Output 1 :
+John Alice Michael Bob Emma 
+Input 2 :
+3
+Emma
+Daniel
+Sophia
+Charlotte 1
+Output 2 :
+Charlotte Emma Daniel Sophia
+
+
+--------------------------------------------------------------
+
+
+// You are using GCC
+#include <iostream>
+using namespace std;
+
+
+class node
+{
+    public:
+    string data;
+    node* next;
+    
+    
+    
+    node(string data)
+    {
+        this -> data = data;
+        this -> next = NULL;
+    }
+};
+
+void insertTail(node* &tail, node* &head, string data)
+{
+    node* temp = new node(data);
+    if (head == NULL)
+    {
+        head = temp;
+        tail = temp;
+    } 
+    else 
+    {
+        tail -> next = temp;
+        tail = temp;
+    }
+}
+
+
+void insertHead(node* &head, string data)
+{
+    node* temp = new node(data);
+    temp -> next = head;
+    head = temp;
+}
+
+void insertPos(node* &tail, node* &head, int pos, string data)
+{
+    node* temp = head;
+    int cnt = 1;
+    
+    if (pos == 1)
+    {
+        insertHead(head, data);
+        return;
+    }
+    
+    while (cnt < pos-1)
+    {
+        temp = temp->next;
+        cnt++;
+    }
+    
+    node* newnode = new node(data);
+    newnode -> next = temp -> next;
+    temp -> next = newnode;
+}
+
+void print(node* &head)
+{
+    node* temp = head;
+    while (temp!=0)
+    {
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+
+int main()
+{
+    node* head = NULL;
+    node* tail = NULL;
+    
+    int n;
+    cin >> n;
+    for(int i = 0; i < n; i++)
+    {
+        string digit;
+        cin >> digit;
+        insertTail(tail,head,digit);
+    }
+    
+    
+    string name;
+    cin >> name;
+    int m;
+    cin >> m;
+    
+    insertPos(tail, head, m, name);
+    print(head);
+}
